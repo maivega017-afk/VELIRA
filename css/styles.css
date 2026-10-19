@@ -1,0 +1,86 @@
+/* Luxe Vault - Custom Styling Extensions */
+
+@layer base {
+  html, body {
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  .pt-safe {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+}
+
+/* Custom Scrollbar Removal */
+::-webkit-scrollbar {
+  display: none;
+}
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Dynamic Ambient Glow Animation */
+@keyframes ambientPulse {
+  0% { transform: scale(1) translate(0, 0); opacity: 0.35; }
+  50% { transform: scale(1.1) translate(15px, -15px); opacity: 0.6; }
+  100% { transform: scale(1) translate(0, 0); opacity: 0.35; }
+}
+
+.ambient-layer circle {
+  animation: ambientPulse 12s ease-in-out infinite alternate;
+}
+
+/* Custom Card Hover Transitions */
+.luxury-card {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.luxury-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px -6px rgba(115, 92, 0, 0.08);
+}
+
+/* Glassmorphism Panel */
+.glass-panel {
+  background: rgba(249, 249, 249, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(208, 197, 175, 0.25);
+}
+
+/* Drawer Slide Animation */
+.drawer-backdrop {
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+.drawer-content {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Modal Overlay */
+.modal-enter {
+  animation: modalFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: scale(0.96) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Active Navigation Glow */
+.nav-tab-active {
+  color: #735c00 !important;
+  font-weight: 700 !important;
+}
+
+/* Notification Toast */
+.toast-notice {
+  animation: toastSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes toastSlideUp {
+  from { transform: translate(-50%, 100%); opacity: 0; }
+  to { transform: translate(-50%, 0); opacity: 1; }
+}
